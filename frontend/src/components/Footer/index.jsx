@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../utils/context";
 
-const StyledFooter = styled.footer``;
+const StyledFooter = styled.footer`
+ 
+`;
 
 const MainContainer = styled.div`
     display: flex;
@@ -27,6 +29,10 @@ const StyledLink = styled(Link)`
     padding: 10px;
     text-decoration: none;
     color: ${(props) => props.thememode.text};
+
+    &:hover{
+        text-decoration:underline;
+    }
 `;
 
 const StyledNavbar = styled.nav``;
