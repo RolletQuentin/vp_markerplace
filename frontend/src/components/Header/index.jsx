@@ -12,6 +12,7 @@ const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 `;
 
 const StyledLogo = styled.img`
@@ -20,12 +21,25 @@ const StyledLogo = styled.img`
 `;
 
 const StyledLink = styled(Link)`
+
     padding: 10px;
     text-decoration: none;
+    font-size: 1.1em;
     color: ${(props) => props.thememode.text};
+
+
+    &:hover{
+        text-decoration:underline;
+    }
 `;
 
-const StyledNavbar = styled.nav``;
+const StyledNavbar = styled.nav`
+    text-align:center;
+
+    
+`;
+
+
 
 const StyledOptionsButton = styled.div`
     display: flex;
@@ -74,3 +88,4 @@ function Header() {
 }
 
 export default Header;
+
