@@ -19,24 +19,28 @@ const PanelWrapper = styled.div`
     & > div {
         width: 50px;
         height: 50px;
-        background: orange;
+        background: linear-gradient(#086972, #02372E);
         display: flex;
         flex-direction: row;
         align-items: center;
+        
     }
 
     & .description {
         color: white;
-        width: 250px;
+        width: 200px;
         height: 50px;
         flex-shrink: 0;
         transform-origin: left;
         transform: scaleX(0%);
-        background: orange;
+        background: linear-gradient(#086972, #02372E);
         justify-content: center;
         align-items: center;
         font-size: 2em;
         align-self: center;
+        border-radius:0px 50px 50px 0px;
+        padding-left:30px;
+       
     }
 
     & > div:hover .description {
