@@ -29,6 +29,10 @@ const CartIcon = styled.div`
     position: relative;
     width: 50px;
     height: 50px;
+
+    &:hover{
+        opacity:70%;
+    }   
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -56,8 +60,10 @@ const PriceIndicator = styled.span`
 
 const CartDescription = styled.div`
     position: absolute;
+    
     background-color: white;
     color: black;
+    border-radius: 10px;
     transition: ${printAnimation} 200ms;
 `;
 

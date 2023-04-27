@@ -16,7 +16,9 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
     }
 `;
 
-const FormWrapper = styled.form``;
+const FormWrapper = styled.form`
+`;
+
 
 const printAnimation = keyframes`
     from {
@@ -26,11 +28,14 @@ const printAnimation = keyframes`
         transform: scaleY(100%);
     }`;
 
+
 const LoginWrapper = styled.div`
     position: absolute;
     background-color: white;
     color: black;
+    border-radius: 10px;
     transition: ${printAnimation} linear 1s;
+
 `;
 
 function LoginButton() {
@@ -106,8 +111,11 @@ function LoginButton() {
                                 <button onClick={() => setIsLoaded(false)}>
                                     Fermer
                                 </button>
+
                             </FormWrapper>
+
                             <a href="/signup">Pas encore inscrit ?</a>
+                            
                         </>
                     ) : null
                 ) : (
