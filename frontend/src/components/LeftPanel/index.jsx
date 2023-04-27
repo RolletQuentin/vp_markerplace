@@ -8,7 +8,7 @@ import { ThemeContext } from "../../utils/context";
 
 const PanelWrapper = styled.div`
     position: fixed;
-    height: 250px;
+    height: 350px;
     width: 50px;
     left: 0px;
     top: 450px;
@@ -17,30 +17,31 @@ const PanelWrapper = styled.div`
     justify-content: space-between;
 
     & > div {
+        padding: 10px;
         width: 50px;
         height: 50px;
-        background: linear-gradient(#086972, #02372E);
+        background: linear-gradient(#086972, #02372e);
         display: flex;
         flex-direction: row;
         align-items: center;
-        
     }
 
     & .description {
+        padding: 10px;
         color: white;
-        width: 200px;
+        /* width: 170px; */
         height: 50px;
         flex-shrink: 0;
         transform-origin: left;
         transform: scaleX(0%);
-        background: linear-gradient(#086972, #02372E);
+        background: linear-gradient(#086972, #02372e);
         justify-content: center;
         align-items: center;
         font-size: 2em;
         align-self: center;
-        border-radius:0px 50px 50px 0px;
-        padding-left:30px;
-       
+        border-radius: 0px 50px 50px 0px;
+        padding-left: 30px;
+        z-index: 10;
     }
 
     & > div:hover .description {
