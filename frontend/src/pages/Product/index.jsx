@@ -86,6 +86,7 @@ const StyledButton = styled.button`
     width: 25px;
     height: 25px;
     font-size: 2em;
+    padding-bottom:6px;
 `;
 
 function Product() {
