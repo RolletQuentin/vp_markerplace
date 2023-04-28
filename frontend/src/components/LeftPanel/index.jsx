@@ -1,157 +1,94 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../../utils/context";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import fontawesome from "@fortawesome/fontawesome";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import InstagramLogo from "../../asset/logoInstagram.png";
+import FacebookLogo from "../../asset/logoFacebook.png";
+import YoutubeLogo from "../../asset/logoYoutube.png";
+import TwitterLogo from "../../asset/logoTwitter.png";
+import { useContext } from "react";
+import { ThemeContext } from "../../utils/context";
 
-fontawesome.library.add(faUser);
+const PanelWrapper = styled.div`
+    position: fixed;
+    height: 250px;
+    width: 50px;
+    left: 0px;
+    top: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+    
 
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+    & > div {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(#a5b4fc, #02372E);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 10%;
+        
+        
+    }
+
+    & .description {
+        color: white;
+        width: 200px;
+        height: 50px;
+        flex-shrink: 0;
+        transform-origin: left;
+        transform: scaleX(0%);
+        background: linear-gradient(#a5b4fc, #02372E);
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        align-self: center;
+        border-radius:0px 50px 50px 0px;
+        padding-left:30px;
+       
+    }
+
+    & > div:hover .description {
+        transform-origin: left;
+        transition: 500ms ease;
+        transform: scaleX(100%);  
+    }
+
+    & > div:hover{
+        border-radius: 5px 0px 0px 5px
+    }
+`;
+
+const ImageWrapper = styled.img`
+    display: flex;
     width: 50px;
     height: 50px;
-
-    &:hover {
-        cursor: pointer;
-    }
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 `;
 
-const FormWrapper = styled.form`
-    padding-right:50px;
-    padding-bottom:20px;
-    
-    
-`;
-
-
-const printAnimation = keyframes`
-    from {
-        transform: scaleY(0%);
-    }
-    to {
-        transform: scaleY(100%);
-    }`;
-
-
-const LoginWrapper = styled.div`
-    position: absolute;
-    right:200px;
-    background: linear-gradient(#696484, #8788ba);
-    color: white;
-    border-radius: 10px;
-    transition: ${printAnimation} linear 1s;
-    padding: 0px 20px;
-
-    
-`;
-
-const Formbutton = styled.div`
-    display: flex; 
-    flex-direction:column;
-    margin:auto;
-    
-`;
-
-
-function LoginButton() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const { userState, setUserState, setToken } = useContext(AuthContext);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const user = {
-            email,
-            password,
-        };
-
-        const response = await fetch("http://localhost:8000/api/auth/login", {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        const json = await response.json();
-        console.log(json);
-
-        if (!response.ok) {
-            setError(json.error);
-            console.log(error);
-        }
-        if (response.ok) {
-            localStorage.setItem("user", JSON.stringify(json));
-            localStorage.setItem("token", json.token);
-            setUserState(json);
-            setToken(json.token);
-            setError(null);
-        }
-    };
-
+function LeftPanel() {
+    const { themeMode } = useContext(ThemeContext);
     return (
-        <div>
-            <button
-                onClick={() =>
-                    isLoaded ? setIsLoaded(false) : setIsLoaded(true)
-                }
-            >
-                <StyledFontAwesomeIcon icon="fa-solid fa-user" />
-            </button>
-            <LoginWrapper>
-                {userState["user"] === null ? (
-                    isLoaded ? (
-                        <>
-                            <FormWrapper onSubmit={handleSubmit}>
-                                <h2>Se connecter</h2>
-
-                                <label>Email :</label>
-                                <input
-                                    type="text"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-
-                                <label><br/>Mot de passe :</label>
-                                <input
-                                    type="password"
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
-                                />
-
-                                
-
-                            </FormWrapper>
-
-                            <Formbutton>
-                                <button>Connexion</button>
-                                <button onClick={() => setIsLoaded(false)}>
-                                    Fermer
-                                </button>
-
-                            <div><a href="/signup">Pas encore inscrit ?</a></div>
-
-                            </Formbutton>
-                            
-                        </>
-                    ) : null
-                ) : (
-                    <button
-                        onClick={() => {
-                            setUserState({ user: null });
-                            localStorage.removeItem("user");
-                            localStorage.removeItem("token");
-                        }}
-                    >
-                        Déconnexion
-                    </button>
-                )}
-            </LoginWrapper>
-        </div>
+        <PanelWrapper thememode={themeMode}>
+            <div>
+                <ImageWrapper src={FacebookLogo} />
+                <div className="description">Facebook</div>
+            </div>
+            <div>
+                <ImageWrapper src={TwitterLogo} />
+                <div className="description">Twitter</div>
+            </div>
+            <div>
+                <ImageWrapper src={InstagramLogo} />
+                <div className="description">Instagram</div>
+            </div>
+            <div>
+                <ImageWrapper src={YoutubeLogo} />
+                <div className="description">Youtube</div>
+            </div>
+        </PanelWrapper>
     );
 }
 
-export default LoginButton;
+export default LeftPanel;
