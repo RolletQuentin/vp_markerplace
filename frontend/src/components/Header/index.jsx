@@ -12,6 +12,10 @@ const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+<<<<<<< Updated upstream
+=======
+    padding-bottom:50px;
+>>>>>>> Stashed changes
     
 `;
 

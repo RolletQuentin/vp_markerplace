@@ -6,6 +6,10 @@ import styled, { keyframes } from "styled-components";
 import { CartContext } from "../../utils/context";
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 fontawesome.library.add(faShoppingCart);
 
 const printAnimation = keyframes`

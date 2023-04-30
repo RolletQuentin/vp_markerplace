@@ -15,6 +15,7 @@ const MainContainer = styled.div`
         display: flex;
         flex-direction: column;
         width: 300px;
+        padding-left: 10px;
     }
 `;
 
