@@ -17,6 +17,10 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 const FormWrapper = styled.form`
+    padding-right:50px;
+    padding-bottom:20px;
+    
+    
 `;
 
 
@@ -31,12 +35,23 @@ const printAnimation = keyframes`
 
 const LoginWrapper = styled.div`
     position: absolute;
-    background-color: white;
-    color: black;
+    right:200px;
+    background: linear-gradient(#696484, #8788ba);
+    color: white;
     border-radius: 10px;
     transition: ${printAnimation} linear 1s;
+    padding: 0px 20px;
 
+    
 `;
+
+const Formbutton = styled.div`
+    display: flex; 
+    flex-direction:column;
+    margin:auto;
+    
+`;
+
 
 function LoginButton() {
     const [email, setEmail] = useState("");
@@ -99,7 +114,7 @@ function LoginButton() {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
 
-                                <label>Mot de passe :</label>
+                                <label><br/>Mot de passe :</label>
                                 <input
                                     type="password"
                                     onChange={(e) =>
@@ -107,14 +122,19 @@ function LoginButton() {
                                     }
                                 />
 
+                                
+
+                            </FormWrapper>
+
+                            <Formbutton>
                                 <button>Connexion</button>
                                 <button onClick={() => setIsLoaded(false)}>
                                     Fermer
                                 </button>
 
-                            </FormWrapper>
+                            <div><a href="/signup">Pas encore inscrit ?</a></div>
 
-                            <a href="/signup">Pas encore inscrit ?</a>
+                            </Formbutton>
                             
                         </>
                     ) : null

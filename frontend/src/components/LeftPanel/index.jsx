@@ -11,7 +11,7 @@ const PanelWrapper = styled.div`
     height: 350px;
     width: 50px;
     left: 0px;
-    top: 450px;
+    top: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,10 +20,11 @@ const PanelWrapper = styled.div`
         padding: 10px;
         width: 50px;
         height: 50px;
-        background: linear-gradient(#086972, #02372e);
+        background: linear-gradient(#a5b4fc, #02372e);
         display: flex;
         flex-direction: row;
         align-items: center;
+        border-radius: 10%;
     }
 
     & .description {
@@ -34,7 +35,7 @@ const PanelWrapper = styled.div`
         flex-shrink: 0;
         transform-origin: left;
         transform: scaleX(0%);
-        background: linear-gradient(#086972, #02372e);
+        background: linear-gradient(#a5b4fc, #02372e);
         justify-content: center;
         align-items: center;
         font-size: 2em;
@@ -48,6 +49,10 @@ const PanelWrapper = styled.div`
         transform-origin: left;
         transition: 500ms ease;
         transform: scaleX(100%);
+    }
+
+    & > div:hover {
+        border-radius: 5px 0px 0px 5px;
     }
 `;
 

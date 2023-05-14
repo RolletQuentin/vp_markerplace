@@ -9,6 +9,7 @@ const Box = styled.div`
     align-items: center;
     margin: 15px;
     padding: 5px;
+    
 `;
 
 const StyledForm = styled.form`
