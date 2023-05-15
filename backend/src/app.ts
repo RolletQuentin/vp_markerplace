@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import { ExceptionsHandler } from "./middlewares/exceptions.handler";
 import { UnknownRoutesHandler } from "./middlewares/unknownRoutes.handler";
 import { AdminController } from "./ressources/admin/admin.controller";
+import { ShoppingItemController } from "./ressources/shoppingItems/shoppingItem.controller";
+import { RatingController } from "./ressources/rating/rating.controller";
 
 const fs = require("fs");
 const express = require("express");
@@ -50,6 +52,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use("/api/auth", AdminController);
+app.use("/api/shoppingItem", ShoppingItemController);
+app.use("/api/rating", RatingController);
 
 // Pour toute les routes non définie, on renvoie une erreur
 app.all("*", UnknownRoutesHandler);
