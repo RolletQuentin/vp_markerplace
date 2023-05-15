@@ -5,11 +5,6 @@ import { useContext, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { CartContext } from "../../utils/context";
 
-
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 fontawesome.library.add(faShoppingCart);
 
 const printAnimation = keyframes`
@@ -35,9 +30,9 @@ const CartIcon = styled.div`
     width: 50px;
     height: 50px;
 
-    &:hover{
-        opacity:70%;
-    }   
+    &:hover {
+        opacity: 70%;
+    }
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -57,7 +52,6 @@ const AmountIndicator = styled.div`
     background-color: red;
     color: white;
     border-radius: 50%;
-    
 `;
 
 const PriceIndicator = styled.span`
@@ -66,45 +60,36 @@ const PriceIndicator = styled.span`
 
 const CartDescription = styled.div`
     position: absolute;
-    
-    text-align:start;
+
+    text-align: start;
     background: linear-gradient(#696484, #8788ba);
     color: white;
     border-radius: 10px;
     padding: 10px 10px 20px 10px;
-    margin:auto;
+    margin: auto;
     transition: ${printAnimation} 200ms;
-
-    & table{
-        margin: auto;
-
-    }
-
-    & td, th{
-        border: 1px solid rgba(0, 0, 0, 0);
-    }
 `;
-/**& table et &td, th c'est pour que l'affichage des produits fonctionne 
- * comme un tableau et normal que l'opacity soit de 0 c'est pour que les cellules en trop reste des cellules*/
-
-
 
 const Formbutton = styled.div`
     display: flex;
     justify-content: space-around;
     margin: auto;
     padding-top: 15px;
-    
 `;
 
 /** sert a mettre une ligne entre les produits */
-const FormListItems = styled.div` 
+const FormListItems = styled.div`
     border-bottom: 1px solid white;
     padding-bottom: 10px;
     padding-top: 10px;
+    display: flex;
+    flex-direction: row;
 `;
 
-
+const FormDescriptionItems = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 function Cart({ className }) {
     const { cart, updateCart, totalPrice, totalAmount } =
@@ -112,7 +97,7 @@ function Cart({ className }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={className} onClickAway={() => setIsOpen(false)}>
+        <div className={className}>
             <CartWrapper
                 onClick={() => {
                     isOpen ? setIsOpen(false) : setIsOpen(true);
@@ -125,55 +110,41 @@ function Cart({ className }) {
                 <PriceIndicator>{totalPrice}€</PriceIndicator>
             </CartWrapper>
             {isOpen ? (
-                <CartDescription> 
+                <CartDescription>
                     <h1>Panier</h1>
                     <table>
                         <tbody>
-                            
-                                {cart.map(
-                                    ({ cover, name, price, amount, size }, index) => (
-                                        <FormListItems> {/**j'ai créé cette balise pour insérer la ligne entre chaque produit */}
-                                            <tr key={`${name}-${index}`}>
-                                                <td rowspan="2">{cover}</td>  {/*dans cette cellule il faudra insérer l'image*/}                                                                               
-                                                <th colspan="15" >{name + "(" + size + ")"}</th> {/**le colspan="15" c'est pour centrer la cellule  */}
-                                            </tr>  
-                                            <tr key={`${name}-${index}`}>  
-                                                <td>{price}€</td>
-                                                <td>x</td>
-                                                <td>{amount}</td>
-                                                <td> = </td>
-                                                <td>{amount * price}€</td>
-                                                <td></td> {/**je sais pas comment faire pour reserer des cellules du coup j'ai créée bcp de cellule vide */}
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            
-                                            
-                                        </FormListItems>
-                                    )
-                                )}
-                            
+                            {cart.map(
+                                (
+                                    { id, name, cover, price, amount, size },
+                                    index
+                                ) => (
+                                    <FormListItems>
+                                        <FormDescriptionItems>
+                                            <strong>
+                                                {name + "(" + size + ")"}
+                                            </strong>
+
+                                            <div>
+                                                {price}€ x{amount}=
+                                                {amount * price}€
+                                            </div>
+                                        </FormDescriptionItems>
+                                    </FormListItems>
+                                )
+                            )}
                         </tbody>
                     </table>
 
                     <Formbutton>
-                    <button onClick={() => updateCart([])}>
-                        Vider le panier
-                    </button>
+                        <button
+                            className="button"
+                            onClick={() => updateCart([])}
+                        >
+                            Vider le panier
+                        </button>
                     </Formbutton>
-                    
                 </CartDescription>
-
-                
             ) : (
                 <div></div>
             )}

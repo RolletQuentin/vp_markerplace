@@ -4,13 +4,9 @@ import { ThemeContext } from "../../context";
 
 const StyledGlobalStyle = createGlobalStyle`
     html, body {
-        height: 100%;
-        padding: 25px;
-        font-family: 'Trebuchet MS', Helvetica, sans-serif;
         background: ${(props) => props.themeMode.body};
         color: ${(props) => props.themeMode.text};
         transition: all 0.50s linear;
-        
     }
 
     a {

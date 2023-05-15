@@ -22,6 +22,7 @@ function Category({ setActiveCategory, categories, activeCategory }) {
     return (
         <div>
             <select
+                className="select"
                 value={activeCategory}
                 onChange={(e) => setActiveCategory(e.target.value)}
             >
@@ -32,7 +33,9 @@ function Category({ setActiveCategory, categories, activeCategory }) {
                     </option>
                 ))}
             </select>
-            <button onClick={() => setActiveCategory("")}>Réinitialiser</button>
+            <button className="button" onClick={() => setActiveCategory("")}>
+                Réinitialiser
+            </button>
         </div>
     );
 }

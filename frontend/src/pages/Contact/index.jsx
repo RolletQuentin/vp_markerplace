@@ -9,7 +9,6 @@ const Box = styled.div`
     align-items: center;
     margin: 15px;
     padding: 5px;
-    
 `;
 
 const StyledForm = styled.form`
@@ -60,7 +59,7 @@ function Contact() {
     const [firstname, setFirstname] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [gender, setGender] = useState();
+    const [, setGender] = useState();
     const [job, setJob] = useState();
     const [birthday, setBirthday] = useState();
     const [object, setObject] = useState("");
@@ -184,6 +183,7 @@ function Contact() {
             <Box>
                 <label className="bigLabel"> Métier :</label>
                 <select
+                    className="select"
                     value={job}
                     onChange={(e) => setJob(e.target.value)}
                     required
@@ -223,7 +223,9 @@ function Contact() {
                 thememode={themeMode}
             />
 
-            <button onClick={handleSubmit}>Envoyer</button>
+            <button className="button" onClick={handleSubmit}>
+                Envoyer
+            </button>
         </StyledForm>
     );
 }
