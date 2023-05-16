@@ -141,7 +141,7 @@ function LoginButton() {
                             </Formbutton>
                         </>
                     ) : null
-                ) : (
+                ) : isLoaded ? (
                     <button
                         className="button"
                         onClick={() => {
@@ -152,7 +152,7 @@ function LoginButton() {
                     >
                         Déconnexion
                     </button>
-                )}
+                ) : null}
             </LoginWrapper>
         </div>
     );

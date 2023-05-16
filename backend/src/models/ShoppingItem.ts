@@ -7,6 +7,7 @@ const ShoppingItem = new Schema({
     category: { type: String, required: true },
     shortDescription: { type: String, required: true },
     longDescription: { type: String, required: true },
+    stock: { type: Number, required: true },
 });
 
 module.exports = model("ShopingItem", ShoppingItem);

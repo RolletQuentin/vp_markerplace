@@ -13,6 +13,7 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
 import LeftPanel from "./components/LeftPanel";
+import Admin from "./pages/Admin";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                             <Route path="produits/:id" element={<Product />} />
 
                             <Route path="contact" element={<Contact />} />
+                            <Route path="admin" element={<Admin />} />
                         </Routes>
                         <Footer />
                     </AuthProvider>

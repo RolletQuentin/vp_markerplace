@@ -57,19 +57,8 @@ const StyledPrice = styled.span`
     font-size: 2em;
 `;
 
-function ShoppingItem({ id, cover, name, price, shortDescription, ratings }) {
+function ShoppingItem({ id, cover, name, price, shortDescription }) {
     const { themeMode } = useContext(ThemeContext);
-
-    const average = () => {
-        if (!Array.isArray(ratings) || ratings.length === 0) {
-            return -1;
-        }
-
-        const totalStars = ratings.reduce((acc, { stars }) => acc + stars, 0);
-        const averageRating = totalStars / ratings.length;
-
-        return Math.round(averageRating * 10) / 10;
-    };
 
     return (
         <ShoppingItemWrapper thememode={themeMode}>
@@ -82,10 +71,6 @@ function ShoppingItem({ id, cover, name, price, shortDescription, ratings }) {
                 <Link to={id}>
                     <StyledName>{name}</StyledName>
                 </Link>
-                <span>{shortDescription}</span>
-                <span>
-                    {average() === -1 ? "Pas D'avis" : average() + "/ 5 ⭐"}
-                </span>
                 <StyledPrice>{price}€</StyledPrice>
             </InfoContainer>
         </ShoppingItemWrapper>

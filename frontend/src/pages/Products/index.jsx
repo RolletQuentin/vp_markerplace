@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useFetch } from "../../utils/hooks";
 import { shoppingItemList } from "../../data/shoppingItem";
 import ShoppingItem from "../../components/ShoppingItem";
 import Category from "../../components/Category";
 import styled from "styled-components";
+import { Loader } from "../../utils/Atoms";
 
 const MainWrapper = styled.div`
     padding: 50px;
@@ -26,6 +28,15 @@ function Products() {
         []
     );
 
+    const { data, isLoading, error } = useFetch(
+        "http://localhost:8000/api/shoppingItem"
+    );
+    const { shoppingItem } = data;
+
+    if (error) {
+        return <div>Oups, il y a un problème</div>;
+    }
+
     return (
         <MainWrapper>
             <Category
@@ -33,31 +44,36 @@ function Products() {
                 setActiveCategory={setActiveCategory}
                 activeCategory={activeCategory}
             />
-            <ShoppingItemWrapper>
-                {shoppingItemList.map(
-                    ({
-                        id,
-                        name,
-                        price,
-                        cover,
-                        category,
-                        shortDescription,
-                        ratings,
-                    }) =>
-                        !activeCategory || activeCategory === category ? (
-                            <div key={id}>
-                                <ShoppingItem
-                                    id={id}
-                                    cover={cover}
-                                    name={name}
-                                    price={price}
-                                    shortDescription={shortDescription}
-                                    ratings={ratings}
-                                />
-                            </div>
-                        ) : null
+            <>
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    <ShoppingItemWrapper>
+                        {shoppingItem.map(
+                            ({
+                                _id,
+                                name,
+                                price,
+                                cover,
+                                category,
+                                shortDescription,
+                            }) =>
+                                !activeCategory ||
+                                activeCategory === category ? (
+                                    <div key={_id}>
+                                        <ShoppingItem
+                                            id={_id}
+                                            cover={cover}
+                                            name={name}
+                                            price={price}
+                                            shortDescription={shortDescription}
+                                        />
+                                    </div>
+                                ) : null
+                        )}
+                    </ShoppingItemWrapper>
                 )}
-            </ShoppingItemWrapper>
+            </>
         </MainWrapper>
     );
 }

@@ -51,22 +51,22 @@ export const CartProvider = ({ children }) => {
     );
 
     // function to add to cart with a pre-treatment of the data belong how many articles are in the cart
-    const addToCart = (name, price, amount, size) => {
+    const addToCart = (name, price, amount) => {
         // we verify if the product is already in the cart or not
         const currentProductAdded = cart.find(
-            (product) => product.name === name && product.size === size
+            (product) => product.name === name
         );
 
         if (currentProductAdded) {
             // we get all the objects which are in the cart who don't correspond to the currentProduct
             const cartFilteredCurrentProduct = cart.filter(
-                (product) => product.name !== name || product.size !== size
+                (product) => product.name !== name
             );
             // if the user not retire all the product
             if (amount !== 0) {
                 updateCart([
                     ...cartFilteredCurrentProduct,
-                    { name, price, amount: amount, size: size },
+                    { name, price, amount: amount },
                 ]);
             }
             // we push the article to the cart, because the amount is 0
@@ -75,10 +75,7 @@ export const CartProvider = ({ children }) => {
             }
         } else {
             if (amount !== 0) {
-                updateCart([
-                    ...cart,
-                    { name, price, amount: amount, size: size },
-                ]);
+                updateCart([...cart, { name, price, amount: amount }]);
             }
         }
     };

@@ -37,6 +37,11 @@ fs.exists("config.json", (doesExists: boolean) => {
 // => met à disposition le body sur l'objet req
 app.use(express.json());
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(req.path, req.method);
+    next();
+});
+
 // Permet de faire des requetes sécurisés
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

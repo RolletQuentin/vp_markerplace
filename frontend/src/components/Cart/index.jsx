@@ -112,29 +112,21 @@ function Cart({ className }) {
             {isOpen ? (
                 <CartDescription>
                     <h1>Panier</h1>
-                    <table>
-                        <tbody>
-                            {cart.map(
-                                (
-                                    { id, name, cover, price, amount, size },
-                                    index
-                                ) => (
-                                    <FormListItems>
-                                        <FormDescriptionItems>
-                                            <strong>
-                                                {name + "(" + size + ")"}
-                                            </strong>
+                    <div>
+                        {cart.map(
+                            ({ id, name, cover, price, amount }, index) => (
+                                <FormListItems>
+                                    <FormDescriptionItems>
+                                        <strong>{name}</strong>
 
-                                            <div>
-                                                {price}€ x{amount}=
-                                                {amount * price}€
-                                            </div>
-                                        </FormDescriptionItems>
-                                    </FormListItems>
-                                )
-                            )}
-                        </tbody>
-                    </table>
+                                        <div>
+                                            {price}€ x{amount}={amount * price}€
+                                        </div>
+                                    </FormDescriptionItems>
+                                </FormListItems>
+                            )
+                        )}
+                    </div>
 
                     <Formbutton>
                         <button

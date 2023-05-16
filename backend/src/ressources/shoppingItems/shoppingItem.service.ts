@@ -24,9 +24,9 @@ export default class ShoppingItemService {
 
     async findOne(req: Request, res: Response) {
         return ShoppingItem.findOne({ _id: req.params.id })
-            .then((shoppingItem: typeof ShoppingItem) =>
-                res.status(200).json({ shoppingItem })
-            )
+            .then((shoppingItem: typeof ShoppingItem) => {
+                res.status(200).json({ shoppingItem });
+            })
             .catch((error: any) => res.status(404).json({ error }));
     }
 
