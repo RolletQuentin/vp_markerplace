@@ -71,6 +71,7 @@ function ShoppingItem({ id, cover, name, price, shortDescription }) {
                 <Link to={id}>
                     <StyledName>{name}</StyledName>
                 </Link>
+                <span>{shortDescription}</span>
                 <StyledPrice>{price}€</StyledPrice>
             </InfoContainer>
         </ShoppingItemWrapper>

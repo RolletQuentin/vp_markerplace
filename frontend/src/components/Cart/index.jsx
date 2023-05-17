@@ -115,7 +115,7 @@ function Cart({ className }) {
                     <div>
                         {cart.map(
                             ({ id, name, cover, price, amount }, index) => (
-                                <FormListItems>
+                                <FormListItems key={id}>
                                     <FormDescriptionItems>
                                         <strong>{name}</strong>
 
